@@ -28,11 +28,11 @@ const Dashboard = () => {
                 <FaList></FaList> All Meal
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink to="/dashboard/updateMeal/:id">
                 <FaList></FaList> Update Meal
               </NavLink>
-            </li>
+            </li> */}
 
             <li>
               <NavLink to="/dashboard/allUsers">

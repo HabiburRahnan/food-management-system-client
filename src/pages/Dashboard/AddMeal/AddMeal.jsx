@@ -1,11 +1,61 @@
 import { useForm } from "react-hook-form";
 import SectionTitle from "../../../Components/SectionTitle";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import axios from "axios";
+import { Helmet } from "react-helmet";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const img_hostingAPI = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddMeal = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit, reset } = useForm();
+  const axiosSecure = useAxiosSecure();
+
+  const onSubmit = async (data) => {
+    console.log(data);
+    const imageFile = { image: data.image[0] };
+    const res = await axios.post(img_hostingAPI, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.success) {
+      //  image bb image url set server site api
+      const mealItem = {
+        mealName: data.mealName,
+        type: data.type,
+        Rating: data.Rating,
+        date: data.date,
+        price: parseFloat(data.Price),
+        description: data.description,
+        reviews: data.reviews,
+        ingredients: data.ingredients,
+        adminEmail: data.adminEmail,
+        adminName: data.adminName,
+        image: res.data?.data?.display_url,
+      };
+      //  now
+      const mealRes = await axiosSecure.post("/meals", mealItem);
+      // console.log(mealRes.data);
+      if (mealRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${data.mealName} added to the menu`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+  };
   return (
     <div>
+      <Helmet>
+        <title>Add Meal | Meal Management</title>
+      </Helmet>
       <SectionTitle heading="ADD meals" subHeading="Whats New"></SectionTitle>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* meal title */}
@@ -14,7 +64,7 @@ const AddMeal = () => {
             <span className="label-text">Meal Title*</span>
           </label>
           <input
-            {...register("name")}
+            {...register("mealName")}
             type="text"
             required
             placeholder="Meal Title"
@@ -69,7 +119,7 @@ const AddMeal = () => {
               className="input input-bordered w-full "
             />
           </div>
-          {/* admin Name */}
+          {/* Rating*/}
           <div className="form-control w-full my-6">
             <label className="label">
               <span className="label-text">Rating*</span>
@@ -103,7 +153,7 @@ const AddMeal = () => {
               <span className="label-text">Admin Name</span>
             </label>
             <input
-              {...register("admin name")}
+              {...register("adminName")}
               type="text"
               required
               placeholder="Admin Name"
@@ -119,7 +169,7 @@ const AddMeal = () => {
               <span className="label-text">Admin Email</span>
             </label>
             <input
-              {...register("admin email")}
+              {...register("adminEmail")}
               type="Email"
               required
               placeholder="Admin Email"
@@ -140,16 +190,29 @@ const AddMeal = () => {
           </div>
         </div>
 
-        {/* meal description */}
-        <div className="form-control w-full my-6">
-          <label className="label">
-            <span className="label-text">Meal Description*</span>
-          </label>
-          <textarea
-            required
-            {...register("description")}
-            placeholder="Meal Description"
-            className="textarea textarea-bordered textarea-lg w-full "></textarea>
+        <div className="md:flex justify-center items-center gap-6">
+          {/* meal description */}
+          <div className="form-control w-full my-6">
+            <label className="label">
+              <span className="label-text">Meal Description*</span>
+            </label>
+            <textarea
+              required
+              {...register("description")}
+              placeholder="Meal Description"
+              className="textarea textarea-bordered textarea-lg w-full "></textarea>
+          </div>
+          {/* meal Reviews */}
+          <div className="form-control w-full my-6">
+            <label className="label">
+              <span className="label-text">Reviews*</span>
+            </label>
+            <textarea
+              required
+              {...register("reviews")}
+              placeholder="Meal Description"
+              className="textarea textarea-bordered textarea-lg w-full "></textarea>
+          </div>
         </div>
 
         <div className=" md:flex  justify-around items-center gap-5 w-full ">

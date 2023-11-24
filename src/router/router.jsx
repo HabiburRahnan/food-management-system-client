@@ -11,15 +11,29 @@ import UpcomingMeals from "../pages/Dashboard/UpcomingMeals/UpcomingMeals";
 import ServeMeals from "../pages/Dashboard/ServeMeals/ServeMeals";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Meals from "../pages/Meals/Meals";
+import ViewsDetails from "../pages/ViewsDetails/ViewsDetails";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/meals",
+        element: <Meals></Meals>,
+      },
+      {
+        path: "/viewsDetails/:id",
+        element: <ViewsDetails></ViewsDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/meals/${params.id}`),
       },
     ],
   },
@@ -42,6 +56,8 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/updateMeal/:id",
         element: <UpdatedMeal></UpdatedMeal>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/meals/${params.id}`),
       },
       {
         path: "/dashboard/allUsers",
