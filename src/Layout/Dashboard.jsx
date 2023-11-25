@@ -2,6 +2,7 @@ import { BsHouse, BsLifePreserver } from "react-icons/Bs";
 import { MdMenu } from "react-icons/Md";
 import { FaUtensils, FaList, FaUsers, FaUpload } from "react-icons/Fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { FaCodePullRequest } from "react-icons/fa6";
 
 const Dashboard = () => {
   return (
@@ -28,11 +29,11 @@ const Dashboard = () => {
                 <FaList></FaList> All Meal
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/dashboard/updateMeal/:id">
-                <FaList></FaList> Update Meal
+            <li>
+              <NavLink to="/dashboard/requestMeals">
+                <FaCodePullRequest /> Request Meals
               </NavLink>
-            </li> */}
+            </li>
 
             <li>
               <NavLink to="/dashboard/allUsers">

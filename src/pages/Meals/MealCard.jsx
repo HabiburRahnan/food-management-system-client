@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const MealCard = ({ meal }) => {
-  console.log(meal);
   const { _id, image, mealName, price } = meal;
   return (
     <div className="relative flex flex-col text-gray-700 bg-white shadow-md  rounded-xl bg-clip-border">
@@ -18,7 +17,9 @@ const MealCard = ({ meal }) => {
         </p>
       </div>
       <div className="flex justify-end px-10 pb-5">
-        <Link to={`/viewsDetails/${_id}`} className="btn btn-outline font-bold ">
+        <Link
+          to={`/viewsDetails/${_id}`}
+          className="btn btn-outline font-bold ">
           Views Details
         </Link>
       </div>

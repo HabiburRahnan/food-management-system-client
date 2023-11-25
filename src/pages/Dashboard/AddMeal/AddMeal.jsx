@@ -210,7 +210,7 @@ const AddMeal = () => {
             <textarea
               required
               {...register("reviews")}
-              placeholder="Meal Description"
+              placeholder="Reviews"
               className="textarea textarea-bordered textarea-lg w-full "></textarea>
           </div>
         </div>

@@ -113,3 +113,6 @@
     transform: rotate(360deg);
   }
 }
+.card-body span {
+  color: orange;
+}
