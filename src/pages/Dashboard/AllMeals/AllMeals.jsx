@@ -3,17 +3,29 @@ import { Link } from "react-router-dom";
 import SectionTitle from "../../../Components/SectionTitle";
 import Loading from "../../../Components/Loading";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useMeals from "../../../hooks/useMeals";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
 
 const AllMeals = () => {
-  const [meal, loading, refetch] = useMeals();
   const axiosSecure = useAxiosSecure();
+
+  const {
+    data: meal = [],
+    refetch,
+    isPending: loading,
+  } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/meals`);
+
+      return res.data;
+    },
+  });
+  console.log(meal);
   if (loading) {
     return <Loading></Loading>;
   }
-
   const handleDeleteItem = (item) => {
     Swal.fire({
       title: "Are you sure?",

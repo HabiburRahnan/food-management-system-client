@@ -5,7 +5,7 @@ import "@smastrom/react-rating/style.css";
 import { AiFillLike } from "react-icons/ai";
 import { useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -64,7 +64,16 @@ const ViewsDetails = () => {
       data,
       like,
     };
-    await axiosPublic.post("/reviews", reviewsData);
+    const res = await axiosPublic.post("/reviews", reviewsData);
+    if (res.data.acknowledged) {
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: "Your Review was successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
   // request related code
   const handleRequestMeal = async () => {

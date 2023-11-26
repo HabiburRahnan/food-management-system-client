@@ -4,11 +4,16 @@ import { FaTrashAlt, FaUsers } from "react-icons/Fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
+import Loading from "../../../Components/Loading";
 
 const ManageUsers = () => {
   const [search, setSearch] = useState("");
   const axiosSecure = useAxiosSecure();
-  const { data: users = [], refetch } = useQuery({
+  const {
+    data: users = [],
+    refetch,
+    isPending,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?search=${search}`);
@@ -20,8 +25,9 @@ const ManageUsers = () => {
     const searchText = e.target.search.value;
     setSearch(searchText);
 
-    console.log(searchText);
+    // console.log(searchText);
   };
+  if (isPending) <Loading></Loading>;
   const handleMakeAdmin = (user) => {
     axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
       console.log(res.data);

@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RequestRow = ({ item, reviews, handleDeleteRequest }) => {
+  // console.log(item);
   return (
     <>
       <tbody>
         <tr className="bg-base-200">
           <th>
             <button
-              onClick={() => handleDeleteRequest(item._id)}
+              onClick={() => handleDeleteRequest(item?._id)}
               className="btn btn-circle btn-outline btn-sm">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -25,16 +26,16 @@ const RequestRow = ({ item, reviews, handleDeleteRequest }) => {
               </svg>
             </button>
           </th>
-          <td>{item.mealName}</td>
-          <td>{item.like}</td>
+          <td>{item?.mealName}</td>
+          <td>{item?.like}</td>
           {reviews?.map((review) =>
             item.mealName === review.mealName ? (
-              <td key={review._id}>{reviews?.length + 1}</td>
+              <td key={review?._id}>{reviews?.length + 1}</td>
             ) : (
-              <td key={item._id}>0</td>
+              ""
             )
           )}
-          <td>{item.status}</td>
+          <td>{item?.status}</td>
           <td>
             <Link
               to={`/viewsDetails/${item?.mealsId}`}

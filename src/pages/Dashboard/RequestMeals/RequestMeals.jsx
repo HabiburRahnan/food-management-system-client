@@ -53,7 +53,6 @@ const RequestMeals = () => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
-    
         <thead className="bg-orange-400 text-white ">
           <tr>
             <th>Cancel</th>
@@ -61,11 +60,12 @@ const RequestMeals = () => {
             <th>Like</th>
             <th>Reviews</th>
             <th>Status</th>
+            <th>View Meal</th>
           </tr>
         </thead>
         {data?.map((item) => (
           <RequestRow
-            key={item._id}
+            key={item?._id}
             item={item}
             reviews={reviews}
             handleDeleteRequest={handleDeleteRequest}></RequestRow>

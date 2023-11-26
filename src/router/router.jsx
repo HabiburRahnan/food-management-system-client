@@ -16,6 +16,8 @@ import ViewsDetails from "../pages/ViewsDetails/ViewsDetails";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Profile from "../pages/Profile/Profile";
 import RequestMeals from "../pages/Dashboard/RequestMeals/RequestMeals";
+import MyReview from "../pages/Dashboard/MyReview/MyReview";
+import EditReview from "../pages/Dashboard/MyReview/EditReview";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +42,12 @@ const router = createBrowserRouter([
         element: <ViewsDetails></ViewsDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/meals/${params.id}`),
+      },
+      {
+        path: "/reviews/:id",
+        element: <EditReview></EditReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/reviews/${params.id}`),
       },
     ],
   },
@@ -80,6 +88,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/requestMeals",
         element: <RequestMeals></RequestMeals>,
+      },
+      {
+        path: "/dashboard/myReview",
+        element: <MyReview></MyReview>,
       },
     ],
   },
