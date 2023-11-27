@@ -18,6 +18,9 @@ import Profile from "../pages/Profile/Profile";
 import RequestMeals from "../pages/Dashboard/RequestMeals/RequestMeals";
 import MyReview from "../pages/Dashboard/MyReview/MyReview";
 import EditReview from "../pages/Dashboard/MyReview/EditReview";
+import PrivetRoute from "./PrivetRoute";
+import AdminRoute from "./AdminRoute";
+import AllReviews from "../pages/Dashboard/AllReviews/AllReviews";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +38,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetRoute>
+            <Profile></Profile>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/viewsDetails/:id",
@@ -45,7 +52,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/reviews/:id",
-        element: <EditReview></EditReview>,
+        element: (
+          <PrivetRoute>
+            <EditReview></EditReview>
+          </PrivetRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/reviews/${params.id}`),
       },
@@ -57,41 +68,85 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/addMeal",
-        element: <AddMeal></AddMeal>,
+        element: (
+          <AdminRoute>
+            <AddMeal></AddMeal>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/allMeal",
-        element: <AllMeals></AllMeals>,
+        element: (
+          <AdminRoute>
+            <AllMeals></AllMeals>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/updateMeal/:id",
-        element: <UpdatedMeal></UpdatedMeal>,
+        element: (
+          <AdminRoute>
+            <UpdatedMeal></UpdatedMeal>
+          </AdminRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/meals/${params.id}`),
       },
       {
         path: "/dashboard/allUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/upcomingMeals",
-        element: <UpcomingMeals></UpcomingMeals>,
+        element: (
+          <AdminRoute>
+            <UpcomingMeals></UpcomingMeals>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/serveMeals",
-        element: <ServeMeals></ServeMeals>,
+        element: (
+          <AdminRoute>
+            <ServeMeals></ServeMeals>
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/requestMeals",
-        element: <RequestMeals></RequestMeals>,
+        element: (
+          <PrivetRoute>
+            <RequestMeals></RequestMeals>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/dashboard/myReview",
-        element: <MyReview></MyReview>,
+        element: (
+          <PrivetRoute>
+            <MyReview></MyReview>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allReview",
+        element: (
+          <PrivetRoute>
+            <AllReviews></AllReviews>
+          </PrivetRoute>
+        ),
       },
     ],
   },

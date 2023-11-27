@@ -4,15 +4,17 @@ import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
 import { AiFillLike } from "react-icons/ai";
 import { useState } from "react";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 const ViewsDetails = () => {
   const meals = useLoaderData();
   const [count, setCount] = useState(0);
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
   const {
@@ -40,14 +42,14 @@ const ViewsDetails = () => {
   const incrementCounter = () => {
     setCount((prevCount) => {
       const newCount = prevCount + 1;
-      axiosPublic.post("/likeCount", { ...likeItem, count: newCount });
+      axiosSecure.post("/likeCount", { ...likeItem, count: newCount });
       return newCount;
     });
   };
   const { data: like = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/likeCount/${mealName}`);
+      const res = await axiosSecure.get(`/likeCount/${mealName}`);
 
       return res.data;
     },
@@ -64,7 +66,7 @@ const ViewsDetails = () => {
       data,
       like,
     };
-    const res = await axiosPublic.post("/reviews", reviewsData);
+    const res = await axiosSecure.post("/reviews", reviewsData);
     if (res.data.acknowledged) {
       Swal.fire({
         position: "top-center",
@@ -75,6 +77,7 @@ const ViewsDetails = () => {
       });
     }
   };
+
   // request related code
   const handleRequestMeal = async () => {
     const request = {
@@ -84,7 +87,7 @@ const ViewsDetails = () => {
       like: like?.length,
       status: "pending",
     };
-    const res = await axiosPublic.post(`/request`, request);
+    const res = await axiosSecure.post(`/request`, request);
     if (res.data.acknowledged) {
       Swal.fire({
         position: "top-center",
@@ -151,7 +154,7 @@ const ViewsDetails = () => {
             </div>
 
             <div className="flex justify-center items-center gap-10 ">
-              <div className="flex justify-center items-center gap-5">
+              <div className="flex justify-center items-center gap-5 text-xl">
                 <span>Reviews: {reviews?.length}</span>
                 <button
                   onClick={incrementCounter}
@@ -160,6 +163,7 @@ const ViewsDetails = () => {
                   <div className="badge badge-secondary ">+{like?.length}</div>
                 </button>
               </div>
+
               <button
                 onClick={() => handleRequestMeal(_id)}
                 className="btn  text-white bg-orange-400 hover:bg-orange-500">

@@ -4,10 +4,12 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Loading from "../../../Components/Loading";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const MyReview = () => {
   const { user } = useAuth();
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const {
     data: reviews = [],
@@ -16,16 +18,13 @@ const MyReview = () => {
   } = useQuery({
     queryKey: ["review"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/reviews/${user?.email}`);
+      const res = await axiosSecure.get(`/reviews/${user?.email}`);
 
       return res.data;
     },
   });
   //   console.log(reviews);
 
-  if (isPending) {
-    <Loading></Loading>;
-  }
   const handleDeleteReview = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -51,6 +50,10 @@ const MyReview = () => {
       }
     });
   };
+
+  if (isPending) {
+    <Loading></Loading>;
+  }
   return (
     <div className="overflow-x-auto">
       <table className="table">

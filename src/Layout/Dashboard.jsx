@@ -49,6 +49,12 @@ const Dashboard = () => {
                   Serve Meals
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/allReview">
+                  <MdReviews />
+                  All Review
+                </NavLink>
+              </li>
             </>
           ) : (
             <>

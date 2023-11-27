@@ -1,17 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import RequestRow from "./RequestRow";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const RequestMeals = () => {
   const { user } = useAuth();
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const { data = [], refetch } = useQuery({
     queryKey: ["request"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/request/${user?.email}`);
+      const res = await axiosSecure.get(`/request/${user?.email}`);
 
       return res.data;
     },
@@ -19,7 +21,7 @@ const RequestMeals = () => {
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/reviews`);
+      const res = await axiosSecure.get(`/reviews`);
 
       return res.data;
     },
@@ -36,7 +38,7 @@ const RequestMeals = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPublic.delete(`/request/${_id}`).then((res) => {
+        axiosSecure.delete(`/request/${_id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",

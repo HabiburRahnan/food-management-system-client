@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import useAuth from "../../../hooks/useAuth";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const img_hostingAPI = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -11,9 +12,10 @@ const img_hostingAPI = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 const AddMeal = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
+  const { user } = useAuth();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const imageFile = { image: data.image[0] };
     const res = await axios.post(img_hostingAPI, imageFile, {
       headers: {
@@ -156,6 +158,8 @@ const AddMeal = () => {
               {...register("adminName")}
               type="text"
               required
+              readOnly
+              defaultValue={user.displayName}
               placeholder="Admin Name"
               className="input input-bordered w-full "
             />
@@ -172,6 +176,8 @@ const AddMeal = () => {
               {...register("adminEmail")}
               type="Email"
               required
+              readOnly
+              defaultValue={user.email}
               placeholder="Admin Email"
               className="input input-bordered w-full "
             />

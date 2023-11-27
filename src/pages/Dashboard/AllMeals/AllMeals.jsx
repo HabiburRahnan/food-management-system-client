@@ -22,7 +22,7 @@ const AllMeals = () => {
       return res.data;
     },
   });
-  console.log(meal);
+  // console.log(meal);
   if (loading) {
     return <Loading></Loading>;
   }

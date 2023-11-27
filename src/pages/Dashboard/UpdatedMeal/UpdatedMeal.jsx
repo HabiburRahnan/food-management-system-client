@@ -3,7 +3,7 @@ import SectionTitle from "../../../Components/SectionTitle";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useLoaderData } from "react-router-dom";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { Helmet } from "react-helmet";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -24,14 +24,14 @@ const UpdatedMeal = () => {
     reviews,
   } = useLoaderData();
 
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     // image upload to image bb and then get an url
     const imageFile = { image: data.image[0] };
-    const res = await axiosPublic.post(img_hostingAPI, imageFile, {
+    const res = await axiosSecure.post(img_hostingAPI, imageFile, {
       headers: {
         "content-type": "multipart/form-data",
       },

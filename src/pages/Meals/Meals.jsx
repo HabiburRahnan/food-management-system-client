@@ -3,10 +3,11 @@ import MealCard from "./MealCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useState } from "react";
-// import axios from "axios";
+// import MealsByCategory from "../../Components/MealsByCategory/MealsByCategory";
 
 const Meals = () => {
   const axiosPublic = useAxiosPublic();
+
   const [search, setSearch] = useState("");
   const [asc, setAsc] = useState(true);
   const { data: meals = [], refetch } = useQuery({
@@ -31,6 +32,7 @@ const Meals = () => {
       <Helmet>
         <title>Meals | Meal Management</title>
       </Helmet>
+
       <div className="flex justify-center md:justify-around items-center gap-2">
         <form
           onSubmit={handleSearch}
@@ -53,6 +55,7 @@ const Meals = () => {
           </button>
         </div>
       </div>
+      {/* <MealsByCategory></MealsByCategory> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-10">
         {meals?.map((meal) => (
           <MealCard key={meal._id} meal={meal}></MealCard>
