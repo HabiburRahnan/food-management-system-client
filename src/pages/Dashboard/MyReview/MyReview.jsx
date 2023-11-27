@@ -23,7 +23,6 @@ const MyReview = () => {
       return res.data;
     },
   });
-  //   console.log(reviews);
 
   const handleDeleteReview = (_id) => {
     Swal.fire({

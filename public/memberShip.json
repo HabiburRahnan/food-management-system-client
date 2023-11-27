@@ -1,0 +1,30 @@
+[
+  {
+    "plan": "Silver",
+    "price": "$0/mo",
+    "request": 5,
+    "time": "6 year",
+    "technicalSupport": "Lifetime"
+  },
+  {
+    "plan": "Standard",
+    "price": "$29/mo",
+    "request": 10,
+    "time": "1 year",
+    "technicalSupport": "Lifetime"
+  },
+  {
+    "plan": "Gold",
+    "price": "$50/mo",
+    "request": 15,
+    "time": "1.5 year",
+    "technicalSupport": "Lifetime"
+  },
+  {
+    "plan": "Platinum",
+    "price": "$80/mo",
+    "request": 20,
+    "time": "2 year",
+    "technicalSupport": "Lifetime"
+  }
+]

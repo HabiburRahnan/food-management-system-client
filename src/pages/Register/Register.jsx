@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import Google from "../../SocalLogin/SocalLogin";
 
 const Register = () => {
@@ -28,6 +28,7 @@ const Register = () => {
             name: data.name,
             email: data.email,
             Image: data.photoURL,
+            badge: "silver",
           };
 
           axiosPublic.post("/users", userInfo).then((res) => {

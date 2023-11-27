@@ -96,7 +96,7 @@ const Navbar = () => {
                 data-tip={`${user?.displayName}`}
                 to="/profile"
                 className="px-4 py-2 hover:bg-base-300 rounded-lg tooltip  tooltip-top">
-                Your Profile
+                My Profile
               </NavLink>
               <NavLink
                 to="/dashboard"

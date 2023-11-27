@@ -24,7 +24,7 @@ const MealsByCategory = () => {
   const breakfasts = meals.filter((item) => item.type === "BreakFast");
   const lunch = meals.filter((item) => item.type === "Lunch");
   const dinner = meals.filter((item) => item.type === "Dinner");
-  console.log(breakfasts, dinner, lunch);
+  // console.log(breakfasts, dinner, lunch);
   return (
     <div className="mb-10">
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

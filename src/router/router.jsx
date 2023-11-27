@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import Dashboard from "../Layout/Dashboard";
-import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import AddMeal from "../pages/Dashboard/AddMeal/AddMeal";
 import AllMeals from "../pages/Dashboard/AllMeals/AllMeals";
 import UpdatedMeal from "../pages/Dashboard/UpdatedMeal/UpdatedMeal";
@@ -66,14 +65,6 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
-      {
-        path: "/dashboard/adminHome",
-        element: (
-          <AdminRoute>
-            <AdminHome></AdminHome>
-          </AdminRoute>
-        ),
-      },
       {
         path: "/dashboard/addMeal",
         element: (
