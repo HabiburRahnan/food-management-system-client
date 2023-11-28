@@ -5,13 +5,14 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Loading from "../../../Components/Loading";
 import SectionTitle from "../../../Components/SectionTitle";
+import Swal from "sweetalert2";
 
 const UpcomingMeals = () => {
   const axiosSecure = useAxiosSecure();
 
   const {
-    data: meal = [],
-
+    data: meals = [],
+    refetch,
     isPending: loading,
   } = useQuery({
     queryKey: ["users"],
@@ -21,6 +22,39 @@ const UpcomingMeals = () => {
       return res.data;
     },
   });
+  const meal = meals[0];
+  // console.log(meal);
+  const mealItem = {
+    mealName: meal?.mealName,
+    type: meal?.type,
+    Rating: meal?.Rating,
+    date: meal?.date,
+    price: parseFloat(meal?.Price),
+    description: meal?.description,
+    reviews: meal?.reviews,
+    ingredients: meal?.ingredients,
+    adminEmail: meal?.adminEmail,
+    adminName: meal?.adminName,
+    image: meal?.image,
+  };
+  console.log(mealItem);
+  const handlePublish = async () => {
+    const mealRes = await axiosSecure.post("/meals", mealItem);
+    // console.log(mealRes.data);
+    refetch();
+    if (mealRes?.data?.insertedId) {
+      const res = await axiosSecure.delete(`/upcoming/${meals[0]._id}`);
+      console.log(res);
+
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: `Meal published `,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
   // console.log(meal);
   if (loading) {
     return <Loading></Loading>;
@@ -46,12 +80,12 @@ const UpcomingMeals = () => {
                   <th>Meals Name</th>
                   <th>Admin Name</th>
                   <th>Admin Email</th>
-                  <th>Reviews</th>
                   <th>Like</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
-                {meal?.map((item) => (
+                {meals?.map((item) => (
                   <tr key={item._id}>
                     <th>
                       <Link to={`/meals/${item?._id}`}>Views</Link>
@@ -71,7 +105,14 @@ const UpcomingMeals = () => {
                     <td>{item.mealName}</td>
                     <td>{item.adminName}</td>
                     <td>{item.adminEmail}</td>
-                    <td>{item.reviews}</td>
+                    <td>{item.like}</td>
+                    <td>
+                      <button
+                        onClick={handlePublish}
+                        className="btn bg-orange-400 text-white hover:bg-orange-600">
+                        Publish
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

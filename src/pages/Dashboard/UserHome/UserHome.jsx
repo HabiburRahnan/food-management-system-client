@@ -31,7 +31,7 @@ const UserHome = () => {
       return res.data;
     },
   });
-  // console.log(about);
+  // console.log(users);
   if (isPending) <Loading></Loading>;
   return (
     <div className=" md:flex justify-around items-center mb-10 ">

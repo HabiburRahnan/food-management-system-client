@@ -17,6 +17,7 @@ const ViewsDetails = () => {
   const [disable, setDisable] = useState(false);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  // console.log(user.displayName);
   const userEmail = user?.email;
   const { register, handleSubmit } = useForm();
   const {
@@ -67,6 +68,7 @@ const ViewsDetails = () => {
   const onSubmit = async (data) => {
     const reviewsData = {
       user: user?.email,
+      name: user?.displayName,
       mealName,
       mealsId: _id,
       data,

@@ -1,18 +1,27 @@
-import { useEffect } from "react";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../Components/Loading";
 
 const MemberSection = () => {
-  const [member, setMember] = useState([]);
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
-  useEffect(() => {
-    fetch("memberShip.json")
-      .then((res) => res.json())
-      .then((data) => setMember(data));
-  }, []);
+  const {
+    data: meal = [],
+
+    isPending: loading,
+  } = useQuery({
+    queryKey: ["member"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/member`);
+
+      return res.data;
+    },
+  });
+
   const handleLogin = () => {
     Swal.fire({
       title: "Are you sure?",
@@ -28,9 +37,12 @@ const MemberSection = () => {
       }
     });
   };
+
+  if (loading) <Loading></Loading>;
+  // console.log(meal);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {member?.map((item) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-3">
+      {meal?.map((item) => (
         <div
           key={item.name}
           className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-[#AABC3A] to-[#AABC3A] bg-clip-border p-8 text-white shadow-md shadow-pink-500/40">
@@ -151,7 +163,7 @@ const MemberSection = () => {
           <div className="p-0 mt-12">
             {user ? (
               <Link
-                to="/payment"
+                to={`/payment/${item._id}`}
                 className="block w-full select-none rounded-lg bg-white py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-pink-500 shadow-md shadow-blue-gray-500/10 transition-all hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-gray-500/20 focus:scale-[1.02] focus:opacity-[0.85] focus:shadow-none active:scale-100 active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"
                 data-ripple-dark="true">

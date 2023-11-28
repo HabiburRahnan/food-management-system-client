@@ -47,12 +47,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/payment",
+        path: "/payment/:id",
         element: (
           <PrivetRoute>
             <Payment></Payment>
           </PrivetRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/member/${params.id}`),
       },
       {
         path: "/upcomingMeals",
