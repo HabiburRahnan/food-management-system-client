@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { Rating } from "@mui/material";
 
 const MealTab = ({ item }) => {
-  console.log(item);
+  // console.log(item);
   return (
     <div className="mx-5">
       <Card sx={{ maxWidth: 345 }}>

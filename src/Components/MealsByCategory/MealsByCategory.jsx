@@ -1,18 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
 import MealTab from "./MealTab";
+import Loading from "../Loading";
 
 const MealsByCategory = () => {
   const axiosPublic = useAxiosPublic();
-  const categories = ["BreakFast", "Lunch", "Dinner"];
-  const { category } = useParams();
-  const initialIndex = categories.indexOf(category);
-  const [tabIndex, setTabIndex] = useState(initialIndex);
+  // const categories = ["BreakFast", "Lunch", "Dinner"];
+  // const { category } = useParams();
+  // const initialIndex = categories.indexOf(category);
+  // const [tabIndex, setTabIndex] = useState(initialIndex);
 
-  const { data: meals = [] } = useQuery({
+  const { data: meals = [], isPending } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/meals`);
@@ -20,6 +21,7 @@ const MealsByCategory = () => {
       return res.data;
     },
   });
+  if (isPending) <Loading></Loading>;
   //   console.log(meals);
   const breakfasts = meals.filter((item) => item.type === "BreakFast");
   const lunch = meals.filter((item) => item.type === "Lunch");
@@ -27,7 +29,8 @@ const MealsByCategory = () => {
   // console.log(breakfasts, dinner, lunch);
   return (
     <div className="mb-10">
-      <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+      <Tabs >
+      {/* selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} */}
         <TabList className=" grid grid-cols-2 md:grid-cols-4 text-center items-center py-2 md:py-5 gap-5 md:gap-10 tabItem  mx-2">
           <Tab className="border border-blue-600 rounded-xl">All Meals</Tab>
           <Tab className="border border-blue-600 rounded-xl">Breakfast</Tab>

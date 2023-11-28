@@ -20,6 +20,9 @@ import EditReview from "../pages/Dashboard/MyReview/EditReview";
 import PrivetRoute from "./PrivetRoute";
 import AdminRoute from "./AdminRoute";
 import AllReviews from "../pages/Dashboard/AllReviews/AllReviews";
+import Upcoming from "../pages/Upcoming/Upcoming";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
+import Payment from "../pages/Home/MemberSection/Payment";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,22 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <Profile></Profile>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivetRoute>
+            <Payment></Payment>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/upcomingMeals",
+        element: (
+          <PrivetRoute>
+            <Upcoming></Upcoming>
           </PrivetRoute>
         ),
       },
@@ -65,6 +84,14 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
     children: [
+      {
+        path: "/dashboard",
+        element: (
+          <AdminRoute>
+            <DashboardHome></DashboardHome>
+          </AdminRoute>
+        ),
+      },
       {
         path: "/dashboard/addMeal",
         element: (

@@ -22,6 +22,7 @@ const AllReviews = () => {
     },
   });
   if (isPending) <Loading></Loading>;
+  console.log(reviews);
   const handleDeleteReview = (_id) => {
     Swal.fire({
       title: "Are you sure?",

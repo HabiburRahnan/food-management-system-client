@@ -53,6 +53,46 @@ const AddMeal = () => {
       }
     }
   };
+  const addUpcoming = async (data) => {
+    // console.log("upcoming", data);
+    // console.log(data);
+    const imageFile = { image: data.image[0] };
+    const res = await axios.post(img_hostingAPI, imageFile, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+
+    if (res.data.success) {
+      //  image bb image url set server site api
+      const mealItem = {
+        mealName: data.mealName,
+        type: data.type,
+        Rating: data.Rating,
+        date: data.date,
+        price: parseFloat(data.Price),
+        description: data.description,
+        reviews: data.reviews,
+        ingredients: data.ingredients,
+        adminEmail: data.adminEmail,
+        adminName: data.adminName,
+        image: res.data?.data?.display_url,
+      };
+      //  now
+      const mealRes = await axiosSecure.post("/upcoming", mealItem);
+      // console.log(mealRes.data);
+      if (mealRes.data.insertedId) {
+        reset();
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `${data.mealName} added to the upcoming`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    }
+  };
   return (
     <div>
       <Helmet>
@@ -227,13 +267,14 @@ const AddMeal = () => {
             className=" btn  bg-gradient-to-r from-green-600 to-orange-500 text-white font-bold mb-5 md:mb-0 ">
             add a Meal
           </button>
-          <button
-            type="submit"
-            className=" btn  bg-gradient-to-r from-blue-500 text-white font-bold to-green-700 ">
-            Add Upcoming
-          </button>
         </div>
       </form>
+      <button
+        type="submit"
+        onClick={handleSubmit(addUpcoming)}
+        className=" btn  bg-gradient-to-r from-blue-500 text-white font-bold to-green-700 ">
+        Add Upcoming
+      </button>
     </div>
   );
 };

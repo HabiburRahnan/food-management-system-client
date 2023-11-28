@@ -1,14 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import { GiUpCard } from "react-icons/gi";
 import useAuth from "../../hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((err) => console.log(err));
   };
+
+  const { data: meal = [] } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/upcoming`);
+
+      return res.data;
+    },
+  });
   const NavLinks = (
     <>
       <li>
@@ -19,10 +31,10 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link to="/dashboard/cart">
+        <Link to="/upcomingMeals">
           <button className="btn btn-sm bg-[#ABBC37]">
             <GiUpCard className="mr-2"></GiUpCard>
-            <div className="badge "></div>
+            <div className="badge ">{meal?.length}</div>
           </button>
         </Link>
       </li>
