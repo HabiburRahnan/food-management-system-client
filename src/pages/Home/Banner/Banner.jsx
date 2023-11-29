@@ -1,3 +1,5 @@
+import { TypeAnimation } from "react-type-animation";
+
 const Banner = () => {
   return (
     <div className="py-10">
@@ -9,8 +11,26 @@ const Banner = () => {
           />
           <div className="text-white py-10 ">
             <div className="items-center justify-center text-center">
-              <h1 className="text-3xl md:text-5xl font-bold">
-                FOOD MANAGEMENT SERVICES
+              <h1 className="text-xl md:text-3xl font-bold">
+                <TypeAnimation
+                  sequence={[
+                    "FOOD MANAGEMENT SERVICES", // Types 'One'
+                    1000, // Waits 1s
+                    "Food", // Deletes 'One' and types 'Two'
+                    2000, // Waits 2s
+                    "FOOD MANAGEMENT SERVICES", // Types 'Three' without deleting 'Two'
+                    () => {
+                      console.log("Sequence completed");
+                    },
+                  ]}
+                  wrapper="span"
+                  cursor={true}
+                  repeat={Infinity}
+                  style={{
+                    fontSize: "2em",
+                    display: "inline-block",
+                  }}
+                />
               </h1>
               <p className="py-6 pt-10 px-6 text-start">
                 Food Management Systems is a suite of software that can
