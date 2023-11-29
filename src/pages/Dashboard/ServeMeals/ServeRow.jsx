@@ -12,7 +12,7 @@ const ServeRow = ({ item, handleServe }) => {
           <td>{item?.status}</td>
           <td>
             <Link
-              onClick={() => handleServe(item._id)}
+              onClick={() => handleServe(item)}
               className="btn btn-outline font-bold ">
               Serve
             </Link>

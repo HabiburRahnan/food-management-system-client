@@ -80,12 +80,10 @@ const Contact = () => {
           className="border-2 border-orange-500 w-full mt-6"
           cols="30"
           rows="10"></textarea>
-
-        <input
-          className="btn w-full mt-5 bg-gradient-to-r from-green-600 to-orange-500 text-white"
-          type="submit"
-          value="send"
-        />
+        <button className="btn w-full mt-5 bg-gradient-to-r from-green-600 to-orange-500 text-white">
+          send
+        </button>
+        {/* <input type="submit" value="send" /> */}
       </form>
     </>
   );

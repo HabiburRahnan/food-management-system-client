@@ -53,6 +53,8 @@ const MyReview = () => {
   if (isPending) {
     <Loading></Loading>;
   }
+
+  console.log(reviews);
   return (
     <div className="overflow-x-auto">
       <table className="table">

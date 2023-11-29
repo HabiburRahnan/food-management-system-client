@@ -34,7 +34,7 @@ const PaymentFrom = () => {
     email: data[0]?.email,
     name: data[0]?.name,
   };
-  console.log(userInfo);
+  // console.log(userInfo);
   useEffect(() => {
     axiosSecure.post("/create-payment-intent", { price }).then((res) => {
       // console.log(res.data.clientSecret);
@@ -81,10 +81,7 @@ const PaymentFrom = () => {
       // console.log(confirmError);
     }
     if (paymentIntent.status === "succeeded") {
-      const update = await axiosSecure.patch(
-        `/users/${prices[0]._id}`,
-        userInfo
-      );
+      const update = await axiosSecure.patch(`/users/${data[0]._id}`, userInfo);
 
       console.log(update);
       if (update.data.modifiedCount > 0) {

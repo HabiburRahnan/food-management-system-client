@@ -13,8 +13,8 @@ import { Rating } from "@mui/material";
 const MealTab = ({ item }) => {
   // console.log(item);
   return (
-    <div className="mx-5">
-      <Card sx={{ maxWidth: 345 }}>
+    <div className=" mt-10 mx-auto">
+      <Card className="mx-auto">
         <CardMedia
           sx={{ height: 140 }}
           image={item.image}

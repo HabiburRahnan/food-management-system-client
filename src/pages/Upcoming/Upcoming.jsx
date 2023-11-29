@@ -12,7 +12,7 @@ const Upcoming = () => {
 
     isPending: loading,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["upcoming"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/upcoming`);
 

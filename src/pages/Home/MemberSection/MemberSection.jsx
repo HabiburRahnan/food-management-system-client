@@ -41,12 +41,12 @@ const MemberSection = () => {
   if (loading) <Loading></Loading>;
   // console.log(meal);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-5 mx-16">
       {meal?.map((item) => (
         <div
           key={item.name}
           className="relative flex w-full max-w-[20rem] flex-col rounded-xl bg-gradient-to-tr from-[#AABC3A] to-[#AABC3A] bg-clip-border p-8 text-white shadow-md shadow-pink-500/40">
-          <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border">
+          <div className="relative pb-8 m-0 mb-8 overflow-hidden text-center text-gray-700 bg-transparent border-b rounded-none shadow-none border-white/10 bg-clip-border mx-auto">
             <p className="block font-sans text-sm antialiased font-normal leading-normal text-white uppercase">
               {item.plan}
             </p>

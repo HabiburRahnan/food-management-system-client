@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ServeRow from "./ServeRow";
 import Loading from "../../../Components/Loading";
+import Swal from "sweetalert2";
 
 const ServeMeals = () => {
   const axiosSecure = useAxiosSecure();
@@ -22,12 +23,22 @@ const ServeMeals = () => {
     <Loading></Loading>;
   }
 
-  
-  const handleServe = async (_id) => {
-    const mealRes = await axiosSecure.patch(`/meals/${_id}`);
-    console.log(mealRes);
+  const handleServe = async (item) => {
+    // console.log(item._id);
+    const mealRes = await axiosSecure.put(`/request/${item._id}`, item);
+    // console.log(mealRes);
+    if (mealRes.data.matchedCount > 0) {
+      refetch();
+      Swal.fire({
+        position: "top-center",
+        icon: "success",
+        title: `${item.mealName} Serve Successfully`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
   };
-  
+
   return (
     <div>
       <Helmet>

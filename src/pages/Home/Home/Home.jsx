@@ -21,8 +21,8 @@ const Home = () => {
         heading="Member Ship"
         subHeading="memberShip"></SectionTitle>
       <MemberSection></MemberSection>
-      <Contact></Contact>
       <HeroSection></HeroSection>
+      <Contact></Contact>
     </div>
   );
 };

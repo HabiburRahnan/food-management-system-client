@@ -41,11 +41,11 @@ const UpcomingMeals = () => {
   const handlePublish = async () => {
     const mealRes = await axiosSecure.post("/meals", mealItem);
     // console.log(mealRes.data);
-    refetch();
+
     if (mealRes?.data?.insertedId) {
       const res = await axiosSecure.delete(`/upcoming/${meals[0]._id}`);
       console.log(res);
-
+      refetch();
       Swal.fire({
         position: "top-center",
         icon: "success",

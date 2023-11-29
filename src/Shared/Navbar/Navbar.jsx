@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   const { data: meal = [] } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["upcoming"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/upcoming`);
 

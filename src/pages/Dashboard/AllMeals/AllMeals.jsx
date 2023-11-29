@@ -15,7 +15,7 @@ const AllMeals = () => {
     refetch,
     isPending: loading,
   } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["meals"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/meals`);
 

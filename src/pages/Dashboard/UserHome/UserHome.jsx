@@ -6,6 +6,7 @@ import { FaSquareFacebook, FaYoutube } from "react-icons/fa6";
 import { FaWhatsappSquare } from "react-icons/fa";
 import AboutMe from "./AboutMe";
 import SectionTitle from "../../../Components/SectionTitle";
+import { Helmet } from "react-helmet";
 
 const UserHome = () => {
   const { user } = useAuth();
@@ -35,16 +36,16 @@ const UserHome = () => {
   if (isPending) <Loading></Loading>;
   return (
     <div className=" md:flex justify-around items-center mb-10 ">
+      <Helmet>
+        <title>Profile | Meal Management</title>
+      </Helmet>
       <div>
         {users?.map((item) => (
           <div
             key={item._id}
             className="relative flex flex-col text-gray-700 bg-white shadow-md md:w-96 rounded-xl bg-clip-border pb-5">
-            <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg  rounded-xl bg-clip-border">
-              <img
-                src="https://docs.material-tailwind.com/img/team-3.jpg"
-                alt="profile-picture"
-              />
+            <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-96 w-96  rounded-xl bg-clip-border">
+              <img src={item?.Image} alt="profile-picture" />
             </div>
             <div className=" text-center mt-5 mx-2 ">
               <h4 className="text-2xl font-bold text-black ">

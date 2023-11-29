@@ -73,7 +73,7 @@ const Dashboard = () => {
             </Link>
           </li>
           <li>
-            <NavLink to="/menu">
+            <NavLink to="/meals">
               <MdMenu></MdMenu> Our Meals
             </NavLink>
           </li>

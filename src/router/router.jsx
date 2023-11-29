@@ -54,7 +54,9 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/member/${params.id}`),
+          fetch(
+            `https://food-management-system-server.vercel.app/member/${params.id}`
+          ),
       },
       {
         path: "/upcomingMeals",
@@ -68,7 +70,9 @@ const router = createBrowserRouter([
         path: "/viewsDetails/:id",
         element: <ViewsDetails></ViewsDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/meals/${params.id}`),
+          fetch(
+            `https://food-management-system-server.vercel.app/meals/${params.id}`
+          ),
       },
       {
         path: "/reviews/:id",
@@ -78,7 +82,9 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/reviews/${params.id}`),
+          fetch(
+            `https://food-management-system-server.vercel.app/reviews/${params.id}`
+          ),
       },
     ],
   },
@@ -89,9 +95,9 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: (
-          <AdminRoute>
+          <PrivetRoute>
             <DashboardHome></DashboardHome>
-          </AdminRoute>
+          </PrivetRoute>
         ),
       },
       {
@@ -118,7 +124,9 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/meals/${params.id}`),
+          fetch(
+            `https://food-management-system-server.vercel.app/meals/${params.id}`
+          ),
       },
       {
         path: "/dashboard/allUsers",

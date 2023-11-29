@@ -15,7 +15,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-   
+
     formState: { errors },
   } = useForm();
 
@@ -39,7 +39,7 @@ const Login = () => {
       </Helmet>
 
       <div className="hero-content flex-col md:flex-row-reverse">
-        <div className="text-center  md:w-1/3 lg:text-left text-white ">
+        <div className="hidden md:block text-center  md:w-1/3 lg:text-left text-white ">
           <img
             className="rounded-3xl"
             src="https://i.ibb.co/tPnpTvk/brooke-lark-V4-MBq8kue3-U-unsplash.jpg"
@@ -47,7 +47,7 @@ const Login = () => {
           />
         </div>
         <div className="card md:w-1/2 w-full max-w-sm shadow-2xl bg-base-100">
-          <div className="text-3xl text-center  pt-5  text-orange-500 font-bold">
+          <div className="text-3xl text-center  pt-5  text-orange-500 font-bold hover:animate-bounce">
             <SectionTitle heading="Login"></SectionTitle>
           </div>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -115,7 +115,7 @@ const Login = () => {
             </div>
           </form>
           <Google></Google>
-          <p className="py-5 flex justify-center  items-center">
+          <p className="py-5 flex justify-center  items-center ">
             New Here Create a account ?
             <Link className="text-blue-600 font-semibold" to="/register">
               Register
