@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAuth from "../../../hooks/useAuth";
 import RequestRow from "./RequestRow";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitle from "../../../Components/SectionTitle";
 
 const RequestMeals = () => {
   const { user } = useAuth();
@@ -54,6 +54,9 @@ const RequestMeals = () => {
 
   return (
     <div className="overflow-x-auto">
+      <SectionTitle
+        heading="Request Meals"
+        subHeading="Your meals"></SectionTitle>
       <table className="table">
         <thead className="bg-orange-400 text-white ">
           <tr>

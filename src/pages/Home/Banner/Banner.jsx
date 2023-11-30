@@ -14,13 +14,13 @@ const Banner = () => {
               <h1 className="text-xl md:text-3xl font-bold">
                 <TypeAnimation
                   sequence={[
-                    "FOOD MANAGEMENT SERVICES", // Types 'One'
-                    1000, // Waits 1s
-                    "Food", // Deletes 'One' and types 'Two'
-                    2000, // Waits 2s
-                    "FOOD MANAGEMENT SERVICES", // Types 'Three' without deleting 'Two'
+                    "FOOD MANAGEMENT SERVICES",
+                    1000,
+                    "Food",
+                    2000,
+                    "FOOD MANAGEMENT SERVICES",
                     () => {
-                      console.log("Sequence completed");
+                      // console.log("Sequence completed");
                     },
                   ]}
                   wrapper="span"

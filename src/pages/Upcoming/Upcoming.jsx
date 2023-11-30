@@ -3,9 +3,12 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Loading from "../../Components/Loading";
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../Components/SectionTitle";
+import { useState } from "react";
+import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 
 const Upcoming = () => {
   const axiosSecure = useAxiosSecure();
+  const [like, setLike] = useState(1);
 
   const {
     data: meal = [],
@@ -19,6 +22,10 @@ const Upcoming = () => {
       return res.data;
     },
   });
+  const handleLike = () => {
+    let totalLike = like + 1;
+    setLike(totalLike);
+  };
   // console.log(meal);
   if (loading) {
     return <Loading></Loading>;
@@ -43,7 +50,7 @@ const Upcoming = () => {
                   <th>Meals Name</th>
                   <th>Admin Name</th>
                   <th>Admin Email</th>
-                  <th>Reviews</th>
+                  <th>Like</th>
                 </tr>
               </thead>
               <tbody>
@@ -64,7 +71,16 @@ const Upcoming = () => {
                     <td>{item.mealName}</td>
                     <td>{item.adminName}</td>
                     <td>{item.adminEmail}</td>
-                    <td>{item.reviews}</td>
+                    <td>
+                      <div
+                        onClick={handleLike}
+                        className=" justify-center items-center gap-5 text-xl">
+                        <button className="text-2xl">
+                          {like ? <AiFillLike /> : <AiOutlineLike />}
+                        </button>
+                        <span>{like}</span>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>

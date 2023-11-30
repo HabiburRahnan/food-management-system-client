@@ -3,6 +3,8 @@ import { GiUpCard } from "react-icons/gi";
 import useAuth from "../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { BsCart4 } from "react-icons/Bs";
+import Loading from "../../Components/Loading";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -13,7 +15,7 @@ const Navbar = () => {
       .catch((err) => console.log(err));
   };
 
-  const { data: meal = [] } = useQuery({
+  const { data: meal = [], isLoading } = useQuery({
     queryKey: ["upcoming"],
     queryFn: async () => {
       const res = await axiosSecure.get(`/upcoming`);
@@ -21,6 +23,17 @@ const Navbar = () => {
       return res.data;
     },
   });
+  const { data = [], isPending } = useQuery({
+    queryKey: ["request"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/request/${user?.email}`);
+
+      return res.data;
+    },
+  });
+  if (isPending || isLoading) {
+    <Loading></Loading>;
+  }
   const NavLinks = (
     <>
       <li>
@@ -33,8 +46,16 @@ const Navbar = () => {
       <li>
         <Link to="/upcomingMeals">
           <button className="btn btn-sm bg-[#ABBC37]">
+            <div className="badge ">Upcoming{meal?.length}</div>
             <GiUpCard className="mr-2"></GiUpCard>
-            <div className="badge ">{meal?.length}</div>
+          </button>
+        </Link>
+      </li>
+      <li>
+        <Link to="/dashboard/requestMeals">
+          <button className="btn btn-sm ">
+            <BsCart4 className="mr-2  "></BsCart4>
+            <div className="badge badge-secondary">+{data?.length}</div>
           </button>
         </Link>
       </li>

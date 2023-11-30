@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Loading from "../../../Components/Loading";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import SectionTitle from "../../../Components/SectionTitle";
 
 const MyReview = () => {
   const { user } = useAuth();
@@ -57,6 +58,7 @@ const MyReview = () => {
   console.log(reviews);
   return (
     <div className="overflow-x-auto">
+      <SectionTitle heading="Reviews" subHeading="your reviews"></SectionTitle>
       <table className="table">
         <thead className="bg-orange-400 text-white ">
           <tr>

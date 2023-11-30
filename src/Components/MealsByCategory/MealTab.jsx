@@ -13,27 +13,27 @@ import { Rating } from "@mui/material";
 const MealTab = ({ item }) => {
   // console.log(item);
   return (
-    <div className=" mt-10 mx-auto">
+    <div className=" mt-10 mx-5">
       <Card className="mx-auto">
         <CardMedia
           sx={{ height: 140 }}
-          image={item.image}
+          image={item?.image}
           title="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {item.mealName}
+            {item?.mealName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {item.description}
+            {item?.description?.slice(0, 170)}
           </Typography>
         </CardContent>
         <CardActions>
           <Button size="small">
-            <Link to={`/viewsDetails/${item._id}`}>View Details</Link>
+            <Link to={`/viewsDetails/${item?._id}`}>View Details</Link>
           </Button>
-          <Rating name="read-only" value={item.Rating} readOnly />
-          <Button size="small">Price:{item.price}</Button>
+          <Rating name="read-only" value={item?.Rating} readOnly />
+          <Button size="small">Price:{item?.price}</Button>
         </CardActions>
       </Card>
     </div>

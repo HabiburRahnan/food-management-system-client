@@ -132,7 +132,7 @@ const ViewsDetails = () => {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 justify-between items-center text-sm md:text-xl font-bold md:py-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 justify-between items-center text-sm md:text-xl font-bold md:py-10">
             <p>
               <span>Date:</span> {date}
             </p>
@@ -145,12 +145,12 @@ const ViewsDetails = () => {
             </p>
 
             <p>
-              <span>ingredients:</span> {ingredients}
-            </p>
-            <p>
               <span>Type:</span> {type}
             </p>
           </div>
+          <p className="text-xl font-semibold">
+            <span className=" text-2xl">ingredients:</span> {ingredients}
+          </p>
           <p className="text-xl font-semibold">
             <span className=" text-2xl">Details: </span>
             {description}

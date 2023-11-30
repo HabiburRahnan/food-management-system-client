@@ -1,3 +1,6 @@
+import { BsCart4, BsHouse } from "react-icons/Bs";
+import { MdMenu } from "react-icons/Md";
+import { GiUpCard } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -53,6 +56,40 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+        </nav>
+        <nav>
+          <header className="footer-title text-center">Services</header>
+          <ul className="grid grid-cols-2 gap-4">
+            <li>
+              <Link to="/">
+                <button className="btn btn-sm bg-[#ABBC37]">
+                  Home <BsHouse className="mr-2"> </BsHouse>
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/upcomingMeals">
+                <button className="btn btn-sm bg-[#ABBC37]">
+                  Upcoming <GiUpCard className="mr-2"></GiUpCard>
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/meals">
+                <button className="btn btn-sm bg-[#ABBC37]">
+                  Meals <MdMenu className="mr-2"></MdMenu>
+                </button>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/dashboard/requestMeals">
+                <button className="btn btn-sm bg-[#ABBC37]">
+                  Request <BsCart4 className="mr-2  "></BsCart4>
+                </button>
+              </Link>
+            </li>
+          </ul>
         </nav>
       </div>
       <div className="footer footer-center p-4 bg-base-300 text-base-content">

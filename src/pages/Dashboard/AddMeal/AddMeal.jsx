@@ -72,7 +72,6 @@ const AddMeal = () => {
         date: data.date,
         price: parseFloat(data.Price),
         description: data.description,
-        reviews: data.reviews,
         ingredients: data.ingredients,
         adminEmail: data.adminEmail,
         adminName: data.adminName,
@@ -246,17 +245,6 @@ const AddMeal = () => {
               required
               {...register("description")}
               placeholder="Meal Description"
-              className="textarea textarea-bordered textarea-lg w-full "></textarea>
-          </div>
-          {/* meal Reviews */}
-          <div className="form-control w-full my-6">
-            <label className="label">
-              <span className="label-text">Reviews*</span>
-            </label>
-            <textarea
-              required
-              {...register("reviews")}
-              placeholder="Reviews"
               className="textarea textarea-bordered textarea-lg w-full "></textarea>
           </div>
         </div>
