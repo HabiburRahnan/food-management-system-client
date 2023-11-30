@@ -105,7 +105,7 @@ const UpcomingMeals = () => {
                     <td>{item.mealName}</td>
                     <td>{item.adminName}</td>
                     <td>{item.adminEmail}</td>
-                    <td>{item.like}</td>
+                    <td>{item.like || 1}</td>
                     <td>
                       <button
                         onClick={handlePublish}
