@@ -1,7 +1,7 @@
 import { BsGoogle } from "react-icons/Bs";
 
 import { useLocation, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/UseAuth";
+import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const Google = () => {
