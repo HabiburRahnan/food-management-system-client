@@ -13,7 +13,8 @@ import { Rating } from "@mui/material";
 const MealTab = ({ item }) => {
   // console.log(item);
   return (
-    <div className=" mt-10 mx-5">
+  <div >
+  <div className=" mt-10 mx-5" >
       <Card className="mx-auto">
         <CardMedia
           sx={{ height: 140 }}
@@ -36,7 +37,8 @@ const MealTab = ({ item }) => {
           <Button size="small">Price:{item?.price}</Button>
         </CardActions>
       </Card>
-    </div>
+    </div></div>
+    
   );
 };
 

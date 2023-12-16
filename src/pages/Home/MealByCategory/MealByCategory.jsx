@@ -2,7 +2,7 @@ import MealsByCategory from "../../../Components/MealsByCategory/MealsByCategory
 
 const MealByCategory = () => {
   return (
-    <div>
+    <div >
       <MealsByCategory></MealsByCategory>
     </div>
   );

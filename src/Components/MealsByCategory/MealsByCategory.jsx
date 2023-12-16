@@ -22,8 +22,8 @@ const MealsByCategory = () => {
   const dinner = meals.filter((item) => item.type === "Dinner");
   // console.log(breakfasts, dinner, lunch);
   return (
-    <div className="mb-10">
-      <Tabs>
+    <div className="mb-10" >
+      <Tabs >
         {/* selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)} */}
         <TabList className=" grid grid-cols-2 md:grid-cols-4 text-center items-center py-2 md:py-5 gap-5 md:gap-10 tabItem  mx-2">
           <Tab className="border border-blue-600 rounded-xl">All Meals</Tab>
@@ -33,7 +33,7 @@ const MealsByCategory = () => {
         </TabList>
 
         <TabPanel>
-          <div>
+          <div >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
               {meals?.map((item) => (
                 <MealTab key={item._id} item={item}></MealTab>
@@ -41,21 +41,21 @@ const MealsByCategory = () => {
             </div>
           </div>
         </TabPanel>
-        <TabPanel>
+        <TabPanel >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 ">
             {breakfasts?.map((item) => (
               <MealTab key={item._id} item={item}></MealTab>
             ))}
           </div>
         </TabPanel>
-        <TabPanel>
+        <TabPanel >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {lunch?.map((item) => (
               <MealTab key={item._id} item={item}></MealTab>
             ))}
           </div>
         </TabPanel>
-        <TabPanel>
+        <TabPanel >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-0 md:gap-5 mt-10">
             {dinner?.map((item) => (
               <MealTab key={item._id} item={item}></MealTab>

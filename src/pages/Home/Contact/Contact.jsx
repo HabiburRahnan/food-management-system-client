@@ -31,8 +31,7 @@ const sendEmail = (e) => {
         <SectionTitle heading="Contact me" subHeading="---contact--"></SectionTitle>
       </div>
 
-      <form ref={form} onSubmit={sendEmail} data-aos="fade-up"
-      data-aos-anchor-placement="bottom-bottom"  data-aos-duration="3000">
+      <form ref={form} onSubmit={sendEmail} >
         <div className="flex w-full   gap-2">
           <div className="form-control w-[50%]">
             <label className="label">

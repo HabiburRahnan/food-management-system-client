@@ -7,6 +7,7 @@ import SectionTitle from "../../../Components/SectionTitle";
 import Contact from "../Contact/Contact";
 
 const Home = () => {
+ 
   return (
     <div>
       <Helmet>
