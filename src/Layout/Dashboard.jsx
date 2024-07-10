@@ -1,6 +1,6 @@
-import { BsHouse, BsLifePreserver } from "react-icons/Bs";
+// import { BsHouse, BsLifePreserver } from "react-icons/Bs";
 import { MdMenu, MdReviews } from "react-icons/Md";
-import { FaUtensils, FaList, FaUsers, FaUpload } from "react-icons/Fa";
+// import { FaUtensils, FaList, FaUsers, FaUpload } from "react-icons/Fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCodePullRequest } from "react-icons/fa6";
 import useAdmin from "../hooks/useAdmin";
@@ -19,28 +19,28 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink to="/dashboard/addMeal">
-                  <FaUtensils></FaUtensils> Add Meal
+                  {/* <FaUtensils></FaUtensils> Add Meal */}
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/allMeal">
-                  <FaList></FaList> All Meal
+                  {/* <FaList></FaList> All Meal */}
                 </NavLink>
               </li>
 
               <li>
                 <NavLink to="/dashboard/allUsers">
-                  <FaUsers></FaUsers>All Users
+                  {/* <FaUsers></FaUsers>All Users */}
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/upcomingMeals">
-                  <FaUpload></FaUpload> Upcoming Meals
+                  {/* <FaUpload></FaUpload> Upcoming Meals */}
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/serveMeals">
-                  <BsLifePreserver />
+                  {/* <BsLifePreserver /> */}
                   Serve Meals
                 </NavLink>
               </li>
@@ -55,7 +55,7 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink to="/dashboard/requestMeals">
-                  <FaCodePullRequest /> Request Meals
+                  {/* <FaCodePullRequest /> Request Meals */}
                 </NavLink>
               </li>
               <li>
@@ -69,12 +69,12 @@ const Dashboard = () => {
           <div className="divider"></div>
           <li>
             <Link to="/">
-              <BsHouse></BsHouse>Home
+              {/* <BsHouse></BsHouse>Home */}
             </Link>
           </li>
           <li>
             <NavLink to="/meals">
-              <MdMenu></MdMenu> Our Meals
+              {/* <MdMenu></MdMenu> Our Meals */}
             </NavLink>
           </li>
         </ul>

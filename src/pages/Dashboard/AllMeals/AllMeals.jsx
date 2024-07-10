@@ -1,4 +1,4 @@
-import { FaEdit, FaTrashAlt } from "react-icons/Fa";
+// import { FaEdit, FaTrashAlt } from "react-icons/Fa";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../../Components/SectionTitle";
 import Loading from "../../../Components/Loading";
@@ -101,7 +101,7 @@ const AllMeals = () => {
                     <td>
                       <Link to={`/dashboard/updateMeal/${item._id}`}>
                         <button className="btn text-xl btn-circle btn-outline bg-orange-500 text-white">
-                          <FaEdit></FaEdit>
+                          {/* <FaEdit></FaEdit> */}
                         </button>
                       </Link>
                     </td>
@@ -109,7 +109,7 @@ const AllMeals = () => {
                       <button
                         onClick={() => handleDeleteItem(item)}
                         className="btn  btn-circle btn-outline bg-red-600 text-white">
-                        <FaTrashAlt></FaTrashAlt>
+                        {/* <FaTrashAlt></FaTrashAlt> */}
                       </button>
                     </td>
                   </tr>
