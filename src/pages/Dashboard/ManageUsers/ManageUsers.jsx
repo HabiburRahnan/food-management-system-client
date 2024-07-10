@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
-// import { FaTrashAlt, FaUsers } from "react-icons/Fa";
+import { FaTrashAlt } from "react-icons/fa";
+import { FaUserSecret } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -93,7 +94,7 @@ const ManageUsers = () => {
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr className="bg-orange-300">
+            <tr className="text-black bg-orange-600">
               <th></th>
               <th>Name</th>
               <th>Email</th>
@@ -115,7 +116,8 @@ const ManageUsers = () => {
                     <button
                       onClick={() => handleMakeAdmin(user)}
                       className="btn btn-circle btn-outline bg-orange-500 text-white text-2xl">
-                      <FaUsers></FaUsers>
+                      <FaUserSecret />
+
                     </button>
                   )}
                 </td>

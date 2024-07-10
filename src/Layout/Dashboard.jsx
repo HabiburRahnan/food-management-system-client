@@ -1,9 +1,14 @@
 // import { BsHouse, BsLifePreserver } from "react-icons/Bs";
 import { MdMenu, MdReviews } from "react-icons/Md";
-// import { FaUtensils, FaList, FaUsers, FaUpload } from "react-icons/Fa";
+import { FaUtensils } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa6";
+import { FaUpload } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaCodePullRequest } from "react-icons/fa6";
 import useAdmin from "../hooks/useAdmin";
+import { BsHouse } from "react-icons/bs";
+import { BsLifePreserver } from "react-icons/bs";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -13,34 +18,34 @@ const Dashboard = () => {
       {/* dashboard side bar */}
 
       {/* my creation */}
-      <div className="col-span-5 md:col-span-3 min-h-screen bg-orange-400 font-bold">
+      <div className="col-span-5 md:col-span-3 min-h-screen text-black bg-orange-600 font-bold">
         <ul className="menu md:p-4 dashboardItem">
           {isAdmin ? (
             <>
               <li>
                 <NavLink to="/dashboard/addMeal">
-                  {/* <FaUtensils></FaUtensils> Add Meal */}
+                  <FaUtensils></FaUtensils> Add Meal
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/allMeal">
-                  {/* <FaList></FaList> All Meal */}
+                  <FaList></FaList> All Meal
                 </NavLink>
               </li>
 
               <li>
                 <NavLink to="/dashboard/allUsers">
-                  {/* <FaUsers></FaUsers>All Users */}
+                  <FaUsers></FaUsers>All Users
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/upcomingMeals">
-                  {/* <FaUpload></FaUpload> Upcoming Meals */}
+                  <FaUpload></FaUpload> Upcoming Meals
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/serveMeals">
-                  {/* <BsLifePreserver /> */}
+                  <BsLifePreserver />
                   Serve Meals
                 </NavLink>
               </li>
@@ -55,7 +60,7 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink to="/dashboard/requestMeals">
-                  {/* <FaCodePullRequest /> Request Meals */}
+                  <FaCodePullRequest /> Request Meals
                 </NavLink>
               </li>
               <li>
@@ -69,17 +74,17 @@ const Dashboard = () => {
           <div className="divider"></div>
           <li>
             <Link to="/">
-              {/* <BsHouse></BsHouse>Home */}
+              <BsHouse></BsHouse>Home
             </Link>
           </li>
           <li>
             <NavLink to="/meals">
-              {/* <MdMenu></MdMenu> Our Meals */}
+              <MdMenu></MdMenu> Our Meals
             </NavLink>
           </li>
         </ul>
       </div>
-      {/*dashboard content  */}
+      {/* dashboard content  */}
       <div className="col-span-7 md:col-span-9 p-8">
         <Outlet></Outlet>
       </div>

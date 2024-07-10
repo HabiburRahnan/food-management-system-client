@@ -63,9 +63,18 @@ const Navbar = () => {
   );
   return (
     <div className={`navbar bg-base-100  max-w-[1280px] mx-auto `}>
-      <div className="drawer">
+      <Link
+          to="/"
+          className=" btn  items-center normal-case text-xl font-extrabold">
+          <img
+            className="w-36"
+            src="https://i.ibb.co/hM8prcq/logo-2.png"
+            alt=""
+          />
+        </Link>
+      <div className="drawer ">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content btn btn-ghost lg:hidden">
           {/* Page content here */}
           <label htmlFor="my-drawer" > <svg
             xmlns="http://www.w3.org/2000/svg"

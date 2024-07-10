@@ -11,7 +11,7 @@ const Banner = () => {
           />
           <div className="text-white py-10 ">
             <div className="items-center justify-center text-center">
-              <h1 className="text-xl md:text-3xl font-bold">
+              <h1 className="text-lg md:text-xl font-bold">
                 <TypeAnimation
                   sequence={[
                     "FOOD MANAGEMENT SERVICES",
