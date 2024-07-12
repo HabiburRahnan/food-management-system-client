@@ -63,15 +63,7 @@ const Navbar = () => {
   );
   return (
     <div className={`navbar bg-base-100  max-w-[1280px] mx-auto `}>
-      <Link
-          to="/"
-          className=" btn  items-center normal-case text-xl font-extrabold">
-          <img
-            className="w-36"
-            src="https://i.ibb.co/hM8prcq/logo-2.png"
-            alt=""
-          />
-        </Link>
+    
       <div className="drawer ">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content btn btn-ghost lg:hidden">
@@ -104,6 +96,15 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+      {/* <Link
+          to="/"
+          className=" btn  items-center normal-case text-xl font-extrabold flex just">
+          <img
+            className="w-36"
+            src="https://i.ibb.co/hM8prcq/logo-2.png"
+            alt=""
+          />
+        </Link> */}
       {/* <div className="navbar-start"> 
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
